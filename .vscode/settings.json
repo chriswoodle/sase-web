@@ -1,0 +1,22 @@
+{
+    "beautify.config": {
+        "preserve_newlines": true,
+        "max_preserve_newlines": 1
+    },
+    "eslint.validate": [
+        {
+            "language": "vue",
+            "autoFix": true
+        }
+    ],
+    "editor.detectIndentation": false,
+    "vetur.format.defaultFormatter.html": "js-beautify-html",
+    "vetur.format.defaultFormatterOptions": {
+        "js-beautify-html": {
+            "wrap_attributes": "preserve"
+        }
+    },
+    "vetur.format.defaultFormatter.ts": "vscode-typescript",
+    "vetur.format.options.tabSize": 4,
+    "typescript.preferences.quoteStyle": "single"
+}

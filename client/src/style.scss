@@ -1,0 +1,28 @@
+html,
+body {
+    background-color: #20262E;
+    margin: 0;
+    padding: 0;
+    color: gray;
+    
+}
+
+* {
+    box-sizing: border-box;
+}
+
+input,
+button {
+    margin-top: 5px;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    -webkit-appearance: none;
+    background-color: #40b883;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    &:hover {
+        background-color: darken(#40b883, 3%);
+    }
+}

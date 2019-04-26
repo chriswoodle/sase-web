@@ -1,0 +1,41 @@
+{
+  "name": "asr-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "chart.js": "^2.8.0",
+    "dsp.js": "^1.0.1",
+    "fft-js": "^0.0.12",
+    "fft-windowing": "^0.1.4",
+    "fili": "^2.0.3",
+    "mfcc": "^0.0.3",
+    "node-wav": "^0.0.2",
+    "vue": "^2.6.10",
+    "vue-chartjs": "^3.4.2",
+    "vue-class-component": "^7.0.2",
+    "vue-property-decorator": "^8.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-typescript": "^3.6.0",
+    "@vue/cli-service": "^3.6.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.1.0",
+    "typescript": "^3.4.3",
+    "vue-template-compiler": "^2.5.21"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
