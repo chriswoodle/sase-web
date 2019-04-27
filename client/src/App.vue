@@ -27,7 +27,6 @@
             <frame-plot v-if='fftOfWindowedFrameChart' :chart-data="fftOfWindowedFrameChart"></frame-plot>
             <frame-plot v-if='mfccFrameChart' :chart-data="mfccFrameChart"></frame-plot>
         </div>
-
     </div>
 </template>
 
@@ -107,7 +106,6 @@ export default class App extends Vue {
     sampleRate: number | null = null;
     speechFrames: Float32Array[] = [];
 
-    data: any = null;
     blob: Blob | null = null;
     filteredBlob: Blob | null = null;
 
@@ -232,7 +230,7 @@ export default class App extends Vue {
 
 
     select(position: number) {
-        // Position of slider between 0-1
+        // Position of slider between 0.00 - 1.00
         const frameNumber = Math.round(this.speechFrames.length * position);
         console.log(frameNumber);
         this.selectedFrame = frameNumber;
@@ -253,7 +251,6 @@ export default class App extends Vue {
                 this.sampleRate = sampleRate;
 
                 const data: Float32Array = result.channelData[0];
-                this.data = data;
 
                 // Filter/preemph
                 const filter = new IIRFilter2(DSP.HIGHPASS, 1000, 0.5, sampleRate);
@@ -271,6 +268,7 @@ export default class App extends Vue {
                 const numberOfFrames = Math.round((speechLength - WINDOW_LENGTH) / frameSize);
                 console.log('numberOfFrames:', numberOfFrames);
 
+                // Frame samples
                 for (let i = 0; i < numberOfFrames; i++) {
                     // beginning of current frame
                     const sample_number = i * frameSize + 1;
@@ -280,35 +278,9 @@ export default class App extends Vue {
                     const speech_frame = data.slice(sample_number, sample_number + WINDOW_LENGTH);
                     this.speechFrames.push(speech_frame);
                     console.log('speech_frame: ', speech_frame)
-
-                    // apply windowing function to current frame
-                    // const windowed_speech = windowing.hamming(Object.assign([], speech_frame));
-                    // this.windowedFrames.push(windowed_speech);
-                    // console.log('windowed_speech: ', windowed_speech)
-
-                    // // apply FFT to windowed speech
-                    // const phasors = fft(windowed_speech);
-                    // console.log(phasors);
-
-                    // const mags = util.fftMag(phasors);
-
-                    // const mfcc = MFCC.construct(
-                    //     128,                       // Number of expected FFT magnitudes
-                    //     NUMBER_OF_MEL_FILTERS,    // Number of Mel filter banks
-                    //     300,                      // Low frequency cutoff
-                    //     3500,                     // High frequency cutoff
-                    //     sampleRate);              // Sample Rate (hz)
-
-                    // const coef = mfcc(mags);
-                    // console.log(coef);
-                    // this.mfccFrames.push(coef)
-
                 }
                 console.log('Complete');
             });
-    }
-    getRandomInt() {
-        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
     }
 }
 </script>
