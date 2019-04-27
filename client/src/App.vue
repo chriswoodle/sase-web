@@ -144,7 +144,7 @@ export default class App extends Vue {
             128,                       // Number of expected FFT magnitudes
             NUMBER_OF_MEL_FILTERS,    // Number of Mel filter banks
             300,                      // Low frequency cutoff
-            3500,                     // High frequency cutoff
+            10000,                     // High frequency cutoff
             this.sampleRate);              // Sample Rate (hz)
 
         const coef = mfcc(this.fftOfWindowedFrame.map(point => point.y));
